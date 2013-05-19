@@ -1,6 +1,4 @@
-#include <Wire.h>
 #include <Servo.h> 
-#include <ArduinoNunchuk.h>
 
 #define BAUDRATE 19200
 
@@ -12,42 +10,33 @@ int yjoystick;
 int parar;
 
 
-ArduinoNunchuk nunchuk = ArduinoNunchuk();
 
 void setup()
 { 
   Serial.begin(BAUDRATE);
-  nunchuk.init();
   base.attach(9); 
   cabeca.attach(10); 
 }
 
 void loop()
 {
-  nunchuk.update();
-  parar = nunchuk.zButton;
-  if(parar == 1)
-    {
-  base.write(xjoystick);
-  yjoystick = nunchuk.analogY;
-  yjoystick = constrain(yjoystick, 34, 228);
-  yjoystick = map(yjoystick, 34, 228, 0, 180);
-  cabeca.write(yjoystick);
-  parar = nunchuk.zButton;   
-    }
-    else
-    {
-  xjoystick = nunchuk.analogX;
-  xjoystick = constrain(xjoystick, 32, 223);
-  xjoystick = map(xjoystick, 32, 223, 0, 180);
   
-  yjoystick = nunchuk.analogY;
-  yjoystick = constrain(yjoystick, 34, 228);
-  yjoystick = map(yjoystick, 34, 228, 0, 180);
-    }
-  
+  xjoystick = analogRead(A1);;
+  xjoystick = constrain(xjoystick, 0, 1023);
+  xjoystick = map(xjoystick, 0, 1023, 0, 180);
+  delay(100);
+  yjoystick = analogRead(A0);;
+  yjoystick = constrain(yjoystick, 0, 1023);
+  yjoystick = map(yjoystick, 0, 1023, 180, 0);
+  delay(100);
+    Serial.print("xjoystick =  ");
+    Serial.print(xjoystick);
+     Serial.print("-----");
+    Serial.print("yjoystick =  ");
+    Serial.println(yjoystick);
+
+
   base.write(xjoystick);
   cabeca.write(yjoystick);
-  delay(10);
   
 }
