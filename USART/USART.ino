@@ -43,7 +43,7 @@ int main(void){
  		
                  //chamada de funcao para enviar o dado recebido
                   
-                  USART_ENVIAR(leitura);
+                  USART_ENVIAR('A');
                
  		_delay_ms(10);        	//Delay de 10ms
  	}
