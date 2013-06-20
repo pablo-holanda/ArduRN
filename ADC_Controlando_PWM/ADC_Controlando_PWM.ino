@@ -29,7 +29,9 @@ int main(void){
 
  			adc_value = read_adc(0);  //ler o ADC
  
-                        pwm = ceil(adc_value * (255 / 1023.0)); //normalizacao da leitura do ADC para o intervalo de 0˜255 para poder aplicar no PWM
+                        pwm = ceil(adc_value * (255 / 1023.0)); //normalizacao da leitura do ADC para o intervalo de 
+                                                                //0˜255 para poder aplicar no PWM
+                        
                         OCR0A = pwm;
  			_delay_ms(20);                	//delay de 500ms
 	}
@@ -45,7 +47,8 @@ void adc_init(void){
 
  ADCSRA |= (1<<ADEN);                			//ativar o ADC
 
- ADCSRA |= (1<<ADSC);                			//Fazer a primeira conversao pois ela e a mais lenta e assim quando eu chamar uma leitura do ADC tudo estara funcionando.
+ ADCSRA |= (1<<ADSC);                			//Fazer a primeira conversao pois ela e a mais lenta e assim quando
+                                                       // eu chamar uma leitura do ADC tudo estara funcionando.
 
 }
 
