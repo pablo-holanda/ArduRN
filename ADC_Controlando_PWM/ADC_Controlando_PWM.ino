@@ -15,16 +15,19 @@ int main(void){
   
     DDRD = 0b11111111;     //setar PORTD como saida
     PORTD = 0x00;
-    TCCR0A = 0b10100011; //Fast PWM de 8bits,
+    TCCR0A = 0b10100011; //Fast PWM de 8bits, limpar o OC0B no Compare Match, setar OC0B no BOTTOM
     TCCR0B = 0b00000011; // Prescaler de 64
     TCNT0 = 0;           // Resetar o TCNT0
     OCR0A = 0;           // Valor inicial da saida PWM
+    
+    DDRB |= 0b00000001; //Configurando a porta PB0 como saida
+    PORTB = 0b00000001; //nivel logico alto na PB0 para setar o sentido desejado do giro do motor
 
         adc_init();    //Configurar o ADC
-
+          
 	while(1){       //loop infinito
 
- 			adc_value = read_adc(0);        	//ler o ADC
+ 			adc_value = read_adc(0);  //ler o ADC
  
                         pwm = ceil(adc_value * (255 / 1023.0)); //normalizacao da leitura do ADC para o intervalo de 0˜255 para poder aplicar no PWM
                         OCR0A = pwm;
