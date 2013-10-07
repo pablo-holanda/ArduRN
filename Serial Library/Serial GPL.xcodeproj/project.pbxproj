@@ -1,0 +1,223 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		16EBB56917F662A400A545F8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 16EBB56817F662A400A545F8 /* main.cpp */; };
+		16EBB56B17F662A400A545F8 /* Serial_GPL.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16EBB56A17F662A400A545F8 /* Serial_GPL.1 */; };
+		16EBB57317F662C700A545F8 /* SerialConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 16EBB57117F662C700A545F8 /* SerialConfig.cpp */; };
+		16EBB57917F66B3500A545F8 /* HandlingSerialRead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 16EBB57717F66B3500A545F8 /* HandlingSerialRead.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		16EBB56217F662A400A545F8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				16EBB56B17F662A400A545F8 /* Serial_GPL.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		16EBB56417F662A400A545F8 /* Serial GPL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Serial GPL"; sourceTree = BUILT_PRODUCTS_DIR; };
+		16EBB56817F662A400A545F8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		16EBB56A17F662A400A545F8 /* Serial_GPL.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Serial_GPL.1; sourceTree = "<group>"; };
+		16EBB57117F662C700A545F8 /* SerialConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SerialConfig.cpp; sourceTree = "<group>"; };
+		16EBB57217F662C700A545F8 /* SerialConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerialConfig.h; sourceTree = "<group>"; };
+		16EBB57717F66B3500A545F8 /* HandlingSerialRead.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HandlingSerialRead.cpp; sourceTree = "<group>"; };
+		16EBB57817F66B3500A545F8 /* HandlingSerialRead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandlingSerialRead.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		16EBB56117F662A400A545F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		16EBB55917F662A400A545F8 = {
+			isa = PBXGroup;
+			children = (
+				16EBB56717F662A400A545F8 /* Serial GPL */,
+				16EBB56517F662A400A545F8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		16EBB56517F662A400A545F8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				16EBB56417F662A400A545F8 /* Serial GPL */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		16EBB56717F662A400A545F8 /* Serial GPL */ = {
+			isa = PBXGroup;
+			children = (
+				16EBB56817F662A400A545F8 /* main.cpp */,
+				16EBB56A17F662A400A545F8 /* Serial_GPL.1 */,
+				16EBB57117F662C700A545F8 /* SerialConfig.cpp */,
+				16EBB57217F662C700A545F8 /* SerialConfig.h */,
+				16EBB57717F66B3500A545F8 /* HandlingSerialRead.cpp */,
+				16EBB57817F66B3500A545F8 /* HandlingSerialRead.h */,
+			);
+			path = "Serial GPL";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		16EBB56317F662A400A545F8 /* Serial GPL */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16EBB56E17F662A400A545F8 /* Build configuration list for PBXNativeTarget "Serial GPL" */;
+			buildPhases = (
+				16EBB56017F662A400A545F8 /* Sources */,
+				16EBB56117F662A400A545F8 /* Frameworks */,
+				16EBB56217F662A400A545F8 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Serial GPL";
+			productName = "Serial GPL";
+			productReference = 16EBB56417F662A400A545F8 /* Serial GPL */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		16EBB55B17F662A400A545F8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Pablo Holanda";
+			};
+			buildConfigurationList = 16EBB55E17F662A400A545F8 /* Build configuration list for PBXProject "Serial GPL" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 16EBB55917F662A400A545F8;
+			productRefGroup = 16EBB56517F662A400A545F8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				16EBB56317F662A400A545F8 /* Serial GPL */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		16EBB56017F662A400A545F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16EBB56917F662A400A545F8 /* main.cpp in Sources */,
+				16EBB57317F662C700A545F8 /* SerialConfig.cpp in Sources */,
+				16EBB57917F66B3500A545F8 /* HandlingSerialRead.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		16EBB56C17F662A400A545F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		16EBB56D17F662A400A545F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		16EBB56F17F662A400A545F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		16EBB57017F662A400A545F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		16EBB55E17F662A400A545F8 /* Build configuration list for PBXProject "Serial GPL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16EBB56C17F662A400A545F8 /* Debug */,
+				16EBB56D17F662A400A545F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		16EBB56E17F662A400A545F8 /* Build configuration list for PBXNativeTarget "Serial GPL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16EBB56F17F662A400A545F8 /* Debug */,
+				16EBB57017F662A400A545F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 16EBB55B17F662A400A545F8 /* Project object */;
+}
