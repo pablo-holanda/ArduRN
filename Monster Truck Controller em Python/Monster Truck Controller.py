@@ -6,8 +6,9 @@ import curses
  
 white = (255, 255, 255)
 
-#Cria um onjeto com a configuracao da porta serial
-ser = serial.Serial('/dev/tty.usbmodem1411', 115200)
+#Cria um objeto com a configuracao da porta serial
+#ser = serial.Serial('/dev/tty.usbmodem1411', 115200)
+ser = serial.Serial('/dev/tty.HC-06-DevB', 9600)
  
 pygame.init()
 pygame.display.set_caption('Monster Truck') #Nome da janela do programa
@@ -39,31 +40,42 @@ while True:
             sys.exit()
             ser.close()
         #Confere a tecla que foi pressionada
-        if event.type == pygame.KEYDOWN: #Detecta quando a tecla e pressionada
-            if event.key == pygame.K_LEFT:
+        if event.type == pygame.KEYDOWN: #Detecta quando a tecla e pressionada K_1
+            if event.key == pygame.K_LEFT: 
                 ser.write('L')
                 screen.blit(esquerda,(30,175))
-                print "Esquerda."
                 #print ser.readline()
             if event.key == pygame.K_RIGHT:
                 ser.write('R')
                 screen.blit(direita,(280,175))
-                print "Direita."
             if event.key == pygame.K_UP:
                 ser.write('U')
                 screen.blit(cima,(150,70))
-                print "Cima."
             if event.key == pygame.K_DOWN:
                 ser.write('D')
                 screen.blit(baixo,(150,280))
-                print "Baixo."
             if event.key == pygame.K_ESCAPE:
                 pygame.quit()
                 sys.exit()
                 ser.close()
+            if event.key == pygame.K_1:
+                ser.write('1')
+            if event.key == pygame.K_2:
+                ser.write('2')
+            if event.key == pygame.K_3:
+                ser.write('3')
+            if event.key == pygame.K_4:
+                ser.write('4')
+            if event.key == pygame.K_5:
+                ser.write('5')
+            if event.key == pygame.K_6:
+                ser.write('6')
+            if event.key == pygame.K_7:
+                ser.write('7')
+            if event.key == pygame.K_8:
+                ser.write('8')
         else:
             ser.write('S')
-            print "Parar."
  
     pygame.display.flip()
     clock.tick(10)

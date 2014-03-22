@@ -1,6 +1,5 @@
 #include <Servo.h> 
 
-
 #define BRAKEVCC 0
 #define CW   1
 #define CCW  2
@@ -18,11 +17,12 @@ int cspin[2] = {2, 3}; // CS: Current sense ANALOG input
 int enpin[2] = {0, 1}; // EN: Status of switches output (Analog pin)
 
 int statpin = 13;
+int velocidade;
 
 void setup()
 {
-  Serial.begin(57600);
-  
+  velocidade = 0;
+  Serial.begin(9600);
   pinMode(statpin, OUTPUT);
   
   tilt.attach(10);
@@ -49,43 +49,83 @@ void setup()
 void loop()
 {
  
-    if (Serial.available()) {
+    if (Serial.available() > 0) {
     // read the oldest byte in the serial buffer:
-    incomingByte = Serial.parseInt() ;
-    if(incomingByte == 4 ) //p/frente
+    incomingByte = Serial.read();
+    
+     if(incomingByte == '1' ) //parar
     {
-    motorGo(0, CW, 50);
-    motorGo(1, CCW, 50);
-     delay(10);
+     velocidade = 100;
     }
-
-    if(incomingByte == 5 ) //p/tras
+    
+     if(incomingByte == '2' ) //parar
     {
-      motorGo(0, CCW, 50);
-      motorGo(1, CW, 50);
-      delay(10);
+      velocidade = 150;
     }
- 
-    if(incomingByte == 8 ) //parar
+    
+     if(incomingByte == '3' ) //parar
+    {
+      velocidade = 200;
+    }
+    
+     if(incomingByte == '4' ) //parar
+    {
+     velocidade = 250;
+    }
+    
+    if(incomingByte == '5' ) //parar
+    {
+     velocidade = 300;
+    }
+    
+    if(incomingByte == '6' ) //parar
+    {
+     velocidade = 350;
+    }
+    
+    if(incomingByte == '7' ) //parar
+    {
+     velocidade = 400;
+    }
+    
+    if(incomingByte == '8' ) //parar
+    {
+     velocidade = 450;
+    }
+    
+     if(incomingByte == 'S' ) //parar
     {
       motorOff(0);
       motorOff(1);
        delay(10);
     }
-
     
-      if(incomingByte== 2 ) //esquerda
+    if(incomingByte == 'U' ) //p/frente
     {
-      motorGo(0, CCW, 70);
-      motorGo(1, CCW, 70);
+    motorGo(0, CW, velocidade);
+    motorGo(1, CCW, velocidade);
+     delay(10);
+    }
+
+    if(incomingByte == 'D' ) //p/tras
+    {
+      motorGo(0, CCW, velocidade);
+      motorGo(1, CW, velocidade);
+      delay(10);
+    }
+  
+      if(incomingByte == 'R' ) //Direita
+    {
+      motorGo(0, CCW, velocidade);
+      motorGo(1, CCW, velocidade);
        delay(100);
     }
 
     
-       if(incomingByte == 3 ) //direita
+       if(incomingByte == 'L' ) //Esquerda
     {
-      motorGo(0, CW, 70);
-      motorGo(1, CW, 70);
+      motorGo(0, CW, velocidade);
+      motorGo(1, CW, velocidade);
        delay(100);
     }
     }
@@ -118,9 +158,10 @@ void motorOff(int motor)
  2: CounterClockwise
  3: Brake to GND
  
- pwm: should be a value between ? and 1023, higher the number, the faster
+ pwm: should be a value between ? and velocidade, higher the number, the faster
  it'll go
  */
+
 void motorGo(uint8_t motor, uint8_t direct, uint8_t pwm)
 {
   if (motor <= 1)
@@ -132,7 +173,6 @@ void motorGo(uint8_t motor, uint8_t direct, uint8_t pwm)
         digitalWrite(inApin[motor], HIGH);
       else
         digitalWrite(inApin[motor], LOW);
-
       // Set inB[motor]
       if ((direct==0)||(direct==2))
         digitalWrite(inBpin[motor], HIGH);
