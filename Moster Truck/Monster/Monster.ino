@@ -84,10 +84,9 @@ void loop()
     
      if(incomingByte == 'S' ) //parar
     {
-      velocidade = 60;
       motorOff(0);
       motorOff(1);
-       delay(10);
+      delay(10);
     }
     
     if(incomingByte == 'U' ) //p/frente
