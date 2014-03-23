@@ -1,8 +1,6 @@
 #include <Servo.h> 
 
 #define BRAKEVCC 0
-#define CW   1
-#define CCW  2
 #define BRAKEGND 3
 #define CS_THRESHOLD 100
 int incomingByte;  
@@ -18,10 +16,11 @@ int enpin[2] = {0, 1}; // EN: Status of switches output (Analog pin)
 
 int statpin = 13;
 int velocidade;
+int sentido[2] = {0,1};
 
 void setup()
 {
-  velocidade = 0;
+  velocidade = 60;
   Serial.begin(9600);
   pinMode(statpin, OUTPUT);
   
@@ -53,48 +52,39 @@ void loop()
     // read the oldest byte in the serial buffer:
     incomingByte = Serial.read();
     
-     if(incomingByte == '1' ) //parar
+     if(incomingByte == '1' )
     {
-     velocidade = 100;
+      if(velocidade > 60){
+        velocidade = velocidade - 10;
+        motorGo(0, sentido[0], velocidade);
+        motorGo(1, sentido[1], velocidade);
+        delay(10);
+      }
+      else{
+        motorGo(0, sentido[0], velocidade);
+        motorGo(1, sentido[1], velocidade);
+        delay(10);
+      }
     }
     
-     if(incomingByte == '2' ) //parar
+     if(incomingByte == '2' )
     {
-      velocidade = 150;
-    }
-    
-     if(incomingByte == '3' ) //parar
-    {
-      velocidade = 200;
-    }
-    
-     if(incomingByte == '4' ) //parar
-    {
-     velocidade = 250;
-    }
-    
-    if(incomingByte == '5' ) //parar
-    {
-     velocidade = 300;
-    }
-    
-    if(incomingByte == '6' ) //parar
-    {
-     velocidade = 350;
-    }
-    
-    if(incomingByte == '7' ) //parar
-    {
-     velocidade = 400;
-    }
-    
-    if(incomingByte == '8' ) //parar
-    {
-     velocidade = 450;
+      if(velocidade < 251){
+        velocidade = velocidade + 10;
+        motorGo(0, sentido[0], velocidade);
+        motorGo(1, sentido[1], velocidade);
+        delay(10);
+      }
+     else{
+        motorGo(0, sentido[0], velocidade);
+        motorGo(1, sentido[1], velocidade);
+        delay(10);
+     }
     }
     
      if(incomingByte == 'S' ) //parar
     {
+      velocidade = 60;
       motorOff(0);
       motorOff(1);
        delay(10);
@@ -102,30 +92,55 @@ void loop()
     
     if(incomingByte == 'U' ) //p/frente
     {
-    motorGo(0, CW, velocidade);
-    motorGo(1, CCW, velocidade);
+    sentido[0] = 1;
+    sentido[1] = 2;
+    motorGo(0, sentido[0], velocidade);
+    motorGo(1, sentido[1], velocidade);
      delay(10);
     }
 
     if(incomingByte == 'D' ) //p/tras
     {
-      motorGo(0, CCW, velocidade);
-      motorGo(1, CW, velocidade);
+      sentido[0] = 2;
+      sentido[1] = 1;
+      motorGo(0, sentido[0], velocidade);
+      motorGo(1, sentido[1], velocidade);
       delay(10);
     }
   
       if(incomingByte == 'R' ) //Direita
     {
-      motorGo(0, CCW, velocidade);
-      motorGo(1, CCW, velocidade);
+      sentido[0] = 2;
+      sentido[1] = 2;
+      motorGo(0, sentido[0], velocidade-10);
+      motorGo(1, sentido[1], velocidade);
        delay(100);
     }
 
+     if(incomingByte == 'r' ) //Direita
+    {
+      sentido[0] = 2;
+      sentido[1] = 2;
+      motorGo(0, sentido[0], velocidade);
+      motorGo(1, sentido[1], velocidade);
+       delay(100);
+    }
     
        if(incomingByte == 'L' ) //Esquerda
     {
-      motorGo(0, CW, velocidade);
-      motorGo(1, CW, velocidade);
+      sentido[0] = 1;
+      sentido[1] = 1;
+      motorGo(0, sentido[0], velocidade);
+      motorGo(1, sentido[1], velocidade-10);
+       delay(100);
+    }
+    
+     if(incomingByte == 'l' ) //Esquerda
+    {
+      sentido[0] = 1;
+      sentido[1] = 1;
+      motorGo(0, sentido[0], velocidade);
+      motorGo(1, sentido[1], velocidade);
        delay(100);
     }
     }

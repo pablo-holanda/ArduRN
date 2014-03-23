@@ -21,10 +21,11 @@ cima = pygame.image.load("/Users/pholanda/Dropbox/UFRN/2014.1/Robotica Experimen
 baixo = pygame.image.load("/Users/pholanda/Dropbox/UFRN/2014.1/Robotica Experimental/Incones para interface/Baixo.png")
 direita = pygame.image.load("/Users/pholanda/Dropbox/UFRN/2014.1/Robotica Experimental/Incones para interface/Direita.png")
 esquerda = pygame.image.load("/Users/pholanda/Dropbox/UFRN/2014.1/Robotica Experimental/Incones para interface/Esquerda.png")
+controle = 0
  
 # by default the key repeat is disabled
 # call set_repeat() to enable it
-#pygame.key.set_repeat(50, 50)
+pygame.key.set_repeat()
  
 while True:
     
@@ -44,38 +45,61 @@ while True:
             if event.key == pygame.K_LEFT: 
                 ser.write('L')
                 screen.blit(esquerda,(30,175))
+                controle = 1
                 #print ser.readline()
             if event.key == pygame.K_RIGHT:
                 ser.write('R')
                 screen.blit(direita,(280,175))
+                controle = 1
             if event.key == pygame.K_UP:
                 ser.write('U')
                 screen.blit(cima,(150,70))
+                controle = 1
             if event.key == pygame.K_DOWN:
                 ser.write('D')
                 screen.blit(baixo,(150,280))
+                controle = 1
+            if event.key == pygame.K_a:
+                ser.write('l')
+                screen.blit(baixo,(150,280))
+                controle = 1
+            if event.key == pygame.K_d:
+                ser.write('r')
+                screen.blit(baixo,(150,280))
+                controle = 1
             if event.key == pygame.K_ESCAPE:
                 pygame.quit()
                 sys.exit()
                 ser.close()
-            if event.key == pygame.K_1:
+            if event.key == pygame.K_z and controle == 1:
                 ser.write('1')
-            if event.key == pygame.K_2:
+            if event.key == pygame.K_x and controle == 1:
                 ser.write('2')
-            if event.key == pygame.K_3:
-                ser.write('3')
-            if event.key == pygame.K_4:
-                ser.write('4')
-            if event.key == pygame.K_5:
-                ser.write('5')
-            if event.key == pygame.K_6:
-                ser.write('6')
-            if event.key == pygame.K_7:
-                ser.write('7')
-            if event.key == pygame.K_8:
-                ser.write('8')
-        else:
-            ser.write('S')
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT: 
+                ser.write('S')
+                screen.blit(esquerda,(30,175))
+                controle = 0
+            if event.key == pygame.K_RIGHT:
+                ser.write('S')
+                screen.blit(direita,(280,175))
+                controle = 0
+            if event.key == pygame.K_UP:
+                ser.write('S')
+                screen.blit(cima,(150,70))
+                controle = 0
+            if event.key == pygame.K_DOWN:
+                ser.write('S')
+                screen.blit(baixo,(150,280))
+                controle = 0
+            if event.key == pygame.K_a:
+                ser.write('S')
+                screen.blit(baixo,(150,280))
+                controle = 0
+            if event.key == pygame.K_d:
+                ser.write('S')
+                screen.blit(baixo,(150,280))
+                controle = 0
  
     pygame.display.flip()
     clock.tick(10)
